@@ -4,7 +4,10 @@
 // script.defer = true;
 // script.async = true;
 // document.head.appendChild(script);
-const locationInput = document.getElementById("location-input").value.toLowerCase().replace(/[^a-z]/g, '');
+const locationInput = document
+  .getElementById("location-input")
+  .value.toLowerCase()
+  .replace(/[^a-z]/g, "");
 
 // const locationInput1 = document.getElementById("location-input");
 
@@ -14,7 +17,10 @@ const locationInput = document.getElementById("location-input").value.toLowerCas
 // console.log(locationInput2 + " locationInput")
 
 function getLocation() {
-  const locationInput = document.getElementById("location-input").value.toLowerCase().replace(/[^a-z]/g, '');
+  const locationInput = document
+    .getElementById("location-input")
+    .value.toLowerCase()
+    .replace(/[^a-z]/g, "");
 
   // const locationInput = document.getElementById("location-input").value;
   console.log(locationInput + " locationInput");
@@ -104,8 +110,6 @@ function getLocation() {
       console.error("Place not found.");
     }
   });
-
-
 }
 
 // This is for showing map
@@ -116,21 +120,18 @@ function initMap(lat, lng) {
   });
 }
 
-
-function weather1(){
+function weather1() {
   const form = document.getElementById("weather-form");
-  const locationInput = document.getElementById("location-input").value.toLowerCase().replace(/[^a-z]/g, '');
+  const locationInput = document
+    .getElementById("location-input")
+    .value.toLowerCase()
+    .replace(/[^a-z]/g, "");
 
   const temperature = document.getElementById("temperature");
   const description = document.getElementById("description");
 
-  // const API_KEY = "d4e8263df058bdb6f8d3921d90e52b30";
-
-  // const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
-
-  // const location = locationInput.value.toLowerCase().replace(/[^a-z]/g, '');
   const url = `/api2?q=${locationInput}`;
-  console.log("Location " + locationInput)
+  console.log("Location " + locationInput);
 
   // const url = `${BASE_URL}?q=${city}&appid=${API_KEY}&units=metric`;
   fetch(url)
@@ -138,7 +139,9 @@ function weather1(){
     .then((data) => {
       console.log(data);
 
-      temperature.textContent = `Temperature in ${locationInput}: ${(data.main.temp - 273.15).toFixed(2)}°C`;
+      temperature.textContent = `Temperature in ${locationInput}: ${(
+        data.main.temp - 273.15
+      ).toFixed(2)}°C`;
       if (data.weather && data.weather[0] && data.weather[0].description) {
         description.innerHTML = `Description: ${data.weather[0].description} </br>`;
       }
@@ -146,20 +149,20 @@ function weather1(){
       description.innerHTML += data.wind.speed
         ? `Speed: ${data.wind.speed} </br>`
         : "";
-        description.innerHTML += data.main.feels_like
+      description.innerHTML += data.main.feels_like
         ? `Feels like: ${(data.main.feels_like - 273.15).toFixed(2)}°C </br>`
         : "";
-    
+
       description.innerHTML += data.main.grnd_level
         ? `Ground Level: ${data.main.grnd_level} </br>`
         : "";
       description.innerHTML += data.main.humidity
         ? `Humidity: ${data.main.humidity} </br>`
         : "";
-        description.innerHTML += data.main.pressure
+      description.innerHTML += data.main.pressure
         ? `Pressure: ${data.main.pressure} hPa </br>`
         : "";
-    
+
       description.innerHTML += data.main.sea_level
         ? `Sea Level: ${data.main.sea_level}`
         : "";
@@ -173,27 +176,24 @@ function weather1(){
 //This is for wiki search
 
 function search() {
-  // const searchTerm = document.getElementById("location-input").value;
-  const locationInput = document.getElementById("location-input").value.toLowerCase().replace(/[^a-z]/g, '');
-
+  const locationInput = document
+    .getElementById("location-input")
+    .value.toLowerCase()
+    .replace(/[^a-z]/g, "");
 
   // const url = `/api3?q=${locationInput}`;
 
-  // const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${locationInput}&exsentences=30&exintro=2&explaintext=2&callback=processResponse`;
-
 
   const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${locationInput}&exsentences=50&exintro=10&explaintext=0&callback=processResponse`;
-
-  
 
   window.processResponse = (data) => {
     const pages = data.query.pages;
     const pageId = Object.keys(pages)[0];
     const page = pages[pageId];
     const extract = page.extract;
-  
+
     const paragraphs = extract.split("\n\n"); // split the content into paragraphs
-  
+
     const resultsElement = document.getElementById("results");
     resultsElement.innerHTML = ""; // clear the old results
 
@@ -203,11 +203,10 @@ function search() {
       resultsElement.appendChild(p); // add the <p> element to the results element
     });
   };
-  
+
   const script = document.createElement("script");
   script.src = url;
   document.head.appendChild(script);
-  
 }
 
 // 10 days weather info
@@ -216,11 +215,14 @@ function search() {
 const weatherData = document.getElementById("weatherData");
 
 function weatherInfo() {
-  // const location = locationInput;
 
-  // const apiKey = "Y7R7LTLPLTJ4ZLXJV9JC6PXC7";
-  // const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${apiKey}&contentType=json`;
-  const url = `/api5?q=${locationInput}`;
+  const locationInput = document
+    .getElementById("location-input")
+    .value.toLowerCase()
+    .replace(/[^a-z]/g, "");
+
+
+  const url = `/api5?location=${locationInput}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -249,18 +251,24 @@ function weatherInfo() {
 const imageContainer = document.getElementById("image-container");
 
 function photoGallery() {
-  console.log(locationInput + " locationInput inside photp");
+  const locationInput = document
+    .getElementById("location-input")
+    .value.toLowerCase()
+    .replace(/[^a-z]/g, "");
 
   let apiContainer = document.getElementsByClassName("apiContainer")[0];
   apiContainer.style.display = "block";
 
   // const location = locationInput.value;
 
-  let accessKey = "0XGK6yAflMMxD_patFaDipFvrJyI8mi_aVrOQ6Y3Zu8";
 
   // Use the Unsplash API to get photos based on the location input
   // const url = `https://api.unsplash.com/search/photos?query=${location}&client_id=${accessKey}`;
-  const url = `/api4?q=${locationInput}`;
+  // const url = `/api4?q=${locationInput}`;
+
+  const url = `/api4?location=${locationInput}`;
+
+  console.log("locationInput inside unsplash " + locationInput);
 
   fetch(url)
     .then((response) => response.json())
