@@ -32,7 +32,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-console.log(JSON.stringify(app) + " app")
 const auth = getAuth(app);
 
 let user = {};
@@ -140,7 +139,6 @@ getDocs(q)
     <a href="#" class="card-link" data-post-id="${doc.id}" id="deletePostLink" onclick="deletePost('${doc.id}')">Delete</a>
   </div>
 </div>`;
-          console.log(" inside auth");
         } else {
           userEmail.innerHTML = "";
           postElement = `
@@ -151,7 +149,6 @@ getDocs(q)
     <p class="card-text">${post.content}</p>
   </div>
 </div>`;
-          console.log(" outside auth");
         }
         postsList.innerHTML += postElement;
       });
@@ -177,7 +174,6 @@ editPostForm.style.display = "none";
 auth.onAuthStateChanged((currentUser) => {
   user = currentUser;
   if (user) {
-    console.log(JSON.stringify(user) + "this is user");
     userEmail.innerHTML = "<b> User Logged In: </b> " + user.email;
     // Show the buttons when a user is logged in
     addPostBtnOnly.style.display = "block";
@@ -190,8 +186,6 @@ auth.onAuthStateChanged((currentUser) => {
 
 window.deletePost = async (postId) => {
   try {
-    console.log("Deleting post with ID: ", postId);
-
     await deleteDoc(doc(postsRef, postId));
     console.log("Post deleted successfully");
     // Refresh the page to remove the deleted post
