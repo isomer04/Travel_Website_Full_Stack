@@ -44,7 +44,6 @@ let user = {};
 auth.onAuthStateChanged((currentUser) => {
   user = currentUser;
   if (user) {
-    console.log(JSON.stringify(user) + "this is user");
     userEmail.innerHTML = "<b> User Logged In: </b> " + user.email;
     window.location.href = "/blog.html";
   } else {
@@ -59,7 +58,6 @@ const register = async () => {
       registerEmail.value,
       registerPassword.value
     );
-    console.log(newUser);
   } catch (error) {
     const errorMessage = error.message.split("Firebase: ")[1];
     console.log(errorMessage);

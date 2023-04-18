@@ -1,20 +1,8 @@
-// const apiKey = process.env.API_KEY_MAP; // Replace with your API key
-// const script = document.createElement('script');
-// script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-// script.defer = true;
-// script.async = true;
-// document.head.appendChild(script);
+
 const locationInput = document
   .getElementById("location-input")
   .value.toLowerCase()
   .replace(/[^a-z]/g, "");
-
-// const locationInput1 = document.getElementById("location-input");
-
-// const locationInput2 = locationInput1.value;
-
-// console.log(locationInput + " locationInput")
-// console.log(locationInput2 + " locationInput")
 
 function getLocation() {
   const locationInput = document
@@ -22,14 +10,12 @@ function getLocation() {
     .value.toLowerCase()
     .replace(/[^a-z]/g, "");
 
-  // const locationInput = document.getElementById("location-input").value;
   console.log(locationInput + " locationInput");
 
   const geocoder = new google.maps.Geocoder();
   const placesService = new google.maps.places.PlacesService(
     document.createElement("div")
   );
-  const mapDiv = document.getElementById("map");
 
   geocoder.geocode({ address: locationInput }, (results, status) => {
     if (status === "OK") {
@@ -51,18 +37,6 @@ function getLocation() {
         (results, status) => {
           if (status === "OK" && results.length > 0) {
             const place = results[0];
-
-            // //   Show a map of the location
-            // const mapOptions = {
-            //   center: location,
-            //   zoom: 12,
-            // };
-            // const map = new google.maps.Map(mapDiv, mapOptions);
-            // const marker = new google.maps.Marker({
-            //   position: location,
-            //   map: map,
-            //   title: locationInput,
-            // });
 
             // Get the first photo for the place, if available
             let photoUrl = "";
@@ -183,7 +157,6 @@ function search() {
 
   // const url = `/api3?q=${locationInput}`;
 
-
   const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${locationInput}&exsentences=50&exintro=10&explaintext=0&callback=processResponse`;
 
   window.processResponse = (data) => {
@@ -209,18 +182,13 @@ function search() {
   document.head.appendChild(script);
 }
 
-// 10 days weather info
-// const locationInput = document.getElementById("location-input");
-
 const weatherData = document.getElementById("weatherData");
 
 function weatherInfo() {
-
   const locationInput = document
     .getElementById("location-input")
     .value.toLowerCase()
     .replace(/[^a-z]/g, "");
-
 
   const url = `/api5?location=${locationInput}`;
 
@@ -258,13 +226,6 @@ function photoGallery() {
 
   let apiContainer = document.getElementsByClassName("apiContainer")[0];
   apiContainer.style.display = "block";
-
-  // const location = locationInput.value;
-
-
-  // Use the Unsplash API to get photos based on the location input
-  // const url = `https://api.unsplash.com/search/photos?query=${location}&client_id=${accessKey}`;
-  // const url = `/api4?q=${locationInput}`;
 
   const url = `/api4?location=${locationInput}`;
 
