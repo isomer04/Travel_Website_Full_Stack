@@ -123,7 +123,6 @@ getDocs(q)
         let postElement;
         user = currentUser;
         if (user) {
-          console.log(JSON.stringify(user) + "this is user");
           userEmail.innerHTML = "<b> User Logged In: </b> " + user.email;
           // Show the buttons when a user is logged in
           addPostBtnOnly.style.display = "block";

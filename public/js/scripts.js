@@ -143,7 +143,7 @@ function weather1() {
     })
     .catch((error) => {
       console.log(error);
-      alert("An error occurred while fetching weather data");
+      // alert("An error occurred while fetching weather data");
     });
 }
 
