@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Travel</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap JavaScript -->
+    <script
+      defer
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@450&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Dream Travel</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="information.html">Information</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"
+              >Login<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://travel.state.gov/content/travel/en/international-travel.html"
+            >
+              International Travel</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1 class="text-center">Blog</h1>
+
+    <div id="editContainer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <form id="editPostForm" style="display: none">
+              <div class="mb-3">
+                <label for="editTitleInput" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editTitleInput"
+                  name="title"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editContentInput" class="form-label">Content</label>
+                <textarea
+                  class="form-control"
+                  id="editContentInput"
+                  name="content"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <input type="hidden" id="editPostIdInput" name="postId" />
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="closeEditForm()"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#addPostModal"
+              id="addPostBtnOnly"
+            >
+              Add New Post
+            </button>
+            <div class="text-end">
+              <span id="user-email"></span>
+              <button
+                type="button"
+                class="text-end btn btn-danger"
+                id="logout-button"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div id="postsList"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="blog-post">
+            <h2 class="blog-post-title">
+              How to Start a Successful Blog in 2023
+            </h2>
+            <p class="blog-post-meta">January 1, 2023 by John Smith</p>
+            <p class="blog-post-content">
+              Starting a blog can be a great way to share your thoughts and
+              ideas with the world. However, it can also be overwhelming if you
+              don't know where to start. In this post, we'll go over some tips
+              on how to start a successful blog in 2023.
+            </p>
+            <p class="blog-post-content">
+              1. Choose a niche - Decide on a specific topic or theme for your
+              blog. This will help you create focused and valuable content for
+              your readers.
+            </p>
+            <p class="blog-post-content">
+              2. Select a blogging platform - There are many blogging platforms
+              to choose from, such as WordPress, Blogger, and Wix. Consider the
+              features, ease of use, and cost when selecting a platform.
+            </p>
+            <p class="blog-post-content">
+              3. Create high-quality content - Your blog posts should be
+              well-written, informative, and engaging. Use a mix of text,
+              images, and videos to keep your readers interested.
+            </p>
+            <p class="blog-post-content">
+              4. Promote your blog - Share your blog posts on social media,
+              forums, and other platforms to increase your reach. Consider using
+              paid advertising if you have the budget.
+            </p>
+            <p class="blog-post-content">
+              5. Engage with your readers - Respond to comments, ask for
+              feedback, and create a community around your blog. This will help
+              you build a loyal following and establish yourself as an authority
+              in your niche.
+            </p>
+            <p class="blog-post-content">
+              Starting a successful blog takes time and effort, but with the
+              right strategies and mindset, you can create a valuable resource
+              for yourself and your readers. Good luck!
+            </p>
+          </div>
+          <!-- /.blog-post -->
+        </div>
+        <!-- /.col-md-8 -->
+
+        <div class="col-md-4">
+          <div class="sidebar">
+            <h3>About the Author</h3>
+            <p>
+              John Smith is a freelance writer and blogger who has been writing
+              online for over 5 years. He enjoys sharing his knowledge and
+              experience with others and helping them achieve their goals.
+            </p>
+          </div>
+
+          <!-- /.sidebar -->
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addPostModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addPostModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPostModalLabel">
+              Add New Blog Post
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="addPostForm">
+              <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input
+                  name="title"
+                  type="text"
+                  class="form-control"
+                  id="title"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="postAuthor">Author</label>
+                <input
+                  name="author"
+                  type="text"
+                  class="form-control"
+                  id="author"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="content">Content</label>
+                <textarea
+                  class="form-control"
+                  id="content"
+                  name="content"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary" id="addPostBtn">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================ -->
+
+    <!-- Button trigger modal 2 -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#editPostModal2"
+    >
+      Edit a blog post
+    </button>
+    <!-- Modal 2 -->
+    <div
+      class="modal fade"
+      id="editPostModal2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Blog Post 2</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="postTitle">Title:</label>
+              <input
+                name="title"
+                type="text"
+                class="form-control"
+                id="postTitle"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea
+                class="form-control"
+                id="content"
+                name="content"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>© Google. All Rights Reserved</p>
+    </footer>
+
+    <!-- Button trigger modal -->
+
+    <!-- Your web app's Firebase configuration -->
+    <script>
+      function closeEditForm() {
+        document.getElementById("editPostForm").style.display = "none";
+      }
+    </script>
+
+    <script defer type="module" src="js/blogScripts.js"></script>
+
+    <!-- <script defer type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signInWithPopup,
+        GoogleAuthProvider,
+      } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        Timestamp,
+        orderBy,
+        getDocs,
+        query,
+        doc,
+        deleteDoc,
+        getDoc,
+        updateDoc,
+      } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyC3LTxzLQE9mWlljZsHZSnG0e8FuS1BtIQ",
+        authDomain: "fullstack-project-travel.firebaseapp.com",
+        projectId: "fullstack-project-travel",
+        storageBucket: "fullstack-project-travel.appspot.com",
+        messagingSenderId: "838492743759",
+        appId: "1:838492743759:web:881b2fedb090346440623a",
+        measurementId: "G-GRCXD5F9DS",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth(app);
+
+      let user = {};
+      const logoutBtn = document.getElementById("logout-button");
+
+      const userEmail = document.getElementById("user-email");
+
+      const addPostBtn = document.getElementById("addPostBtn");
+      const editContainer = document.getElementById("editContainer");
+
+      editContainer.style.display = "none";
+
+      const logout = async () => {
+        try {
+          await auth.signOut();
+          location.reload();
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+      logoutBtn.addEventListener("click", logout);
+
+      // Get a reference to the posts collection in Firestore
+      const db = getFirestore();
+      const postsRef = collection(db, "posts");
+
+      // Add a new post to the collection
+      const addPost = async (title, content, author) => {
+        try {
+          const docRef = await addDoc(postsRef, {
+            title: title,
+            content: content,
+            created_at: Timestamp.now(),
+            author: author,
+          });
+          console.log("New post added with ID: ", docRef.id);
+          // Refresh the page to show the new post
+          location.reload();
+        } catch (error) {
+          console.error("Error adding post: ", error);
+        }
+      };
+
+      // Handle the form submission when the "Save changes" button is clicked
+      addPostBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Get the values from the form
+        const title = document.getElementById("title").value;
+        const content = document.getElementById("content").value;
+        const author = document.getElementById("author").value;
+
+        // Validate the form
+        if (title.length == 0 || content.length == 0) {
+          alert("Please fill in all the fields");
+          return false;
+        }
+
+        // Add the new post to the database
+        addPost(title, content, author);
+      });
+
+      //Show blog post in the page
+      const q = query(collection(db, "posts"), orderBy("created_at", "desc"));
+      getDocs(q)
+        .then((querySnapshot) => {
+          const postsList = document.getElementById("postsList");
+          querySnapshot.forEach((doc) => {
+            const post = doc.data();
+
+            // Format the date using toLocaleDateString()
+            const createdDate = new Date(
+              post.created_at.seconds * 1000
+            ).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            });
+
+            const addPostBtnOnly = document.getElementById("addPostBtnOnly");
+
+            // Hide the buttons by default
+            addPostBtnOnly.style.display = "none";
+            editPostForm.style.display = "none";
+
+            auth.onAuthStateChanged((currentUser) => {
+              let postElement;
+              user = currentUser;
+              if (user) {
+                console.log(JSON.stringify(user) + "this is user");
+                userEmail.innerHTML = "<b> User Logged In: </b> " + user.email;
+                // Show the buttons when a user is logged in
+                addPostBtnOnly.style.display = "block";
+                editContainer.style.display = "block";
+
+                // editPostForm.style.display = "block";
+                // deletePostLink.style.display = "block";
+                postElement = `
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">${post.title}</h4>
+          <p class="card-title">${createdDate} <em>By ${post.author}</em></p>
+          <p class="card-text">${post.content}</p>
+          <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#editPostModal2" data-post-id="${doc.id}" onclick="prefillEditPostModal('${doc.id}')">Edit</a>
+          <a href="#" class="card-link" data-post-id="${doc.id}" id="deletePostLink" onclick="deletePost('${doc.id}')">Delete</a>
+        </div>
+      </div>`;
+                console.log(" inside auth");
+              } else {
+                userEmail.innerHTML = "";
+                postElement = `
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">${post.title}</h4>
+          <p class="card-title">${createdDate} <em>By ${post.author}</em></p>
+          <p class="card-text">${post.content}</p>
+        </div>
+      </div>`;
+                console.log(" outside auth");
+              }
+              postsList.innerHTML += postElement;
+            });
+          });
+        })
+        .catch((error) => {
+          console.error("Error reading posts: ", error);
+        });
+
+      // ============================ working end
+
+      // Get the buttons for adding, editing, and deleting posts
+      // const editPostForm = document.getElementById("editPostForm");
+      // const deletePostLink = document.getElementById("deletePostLink");
+
+      const addPostBtnOnly = document.getElementById("addPostBtnOnly");
+
+      // Hide the buttons by default
+      addPostBtnOnly.style.display = "none";
+      editPostForm.style.display = "none";
+      // deletePostLink.style.display = "none";
+
+      auth.onAuthStateChanged((currentUser) => {
+        user = currentUser;
+        if (user) {
+          console.log(JSON.stringify(user) + "this is user");
+          userEmail.innerHTML = "<b> User Logged In: </b> " + user.email;
+          // Show the buttons when a user is logged in
+          addPostBtnOnly.style.display = "block";
+          // editPostForm.style.display = "block";
+          // deletePostLink.style.display = "block";
+        } else {
+          userEmail.innerHTML = "";
+        }
+      });
+
+      window.deletePost = async (postId) => {
+        try {
+          console.log("Deleting post with ID: ", postId);
+
+          await deleteDoc(doc(postsRef, postId));
+          console.log("Post deleted successfully");
+          // Refresh the page to remove the deleted post
+          location.reload();
+        } catch (error) {
+          console.error("Error deleting post: ", error);
+        }
+      };
+
+      // Define a function to edit a post
+      window.prefillEditPostModal = (postId) => {
+        // Get the post document from Firestore using its ID
+        const postDocRef = doc(db, "posts", postId);
+
+        // Get the post data and fill in the values in the edit post modal
+        getDoc(postDocRef)
+          .then((doc) => {
+            if (doc.exists()) {
+              const post = doc.data();
+              // const editPostForm = document.getElementById("editPostForm");
+              editPostForm.style.display = "block";
+
+              editPostForm.elements.title.value = post.title;
+              editPostForm.elements.content.value = post.content;
+              editPostForm.dataset.postId = postId;
+              // location.reload();
+            } else {
+              console.log("No such post document!");
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting post document: ", error);
+          });
+      };
+
+      // Define the editPost function
+      const editPost = async (postId, title, content) => {
+        try {
+          const postDocRef = doc(db, "posts", postId);
+
+          await updateDoc(postDocRef, { title, content });
+
+          console.log("Post updated successfully");
+          // Hide the edit post modal
+          const editPostModal = document.getElementById("editPostModal");
+          // const bsModal = bootstrap.Modal.getInstance(editPostModal);
+          // bsModal.hide();
+          // Refresh the page to display the updated post
+          location.reload();
+        } catch (error) {
+          console.error("Error updating post: ", error);
+        }
+      };
+
+      // Handle the submit event for the edit post form
+      // const editPostForm = document.getElementById("editPostForm");
+      editPostForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const title = editPostForm.elements.title.value.trim();
+        const content = editPostForm.elements.content.value.trim();
+        const postId = editPostForm.dataset.postId;
+        editPost(postId, title, content);
+        editPostForm.style.display = "none";
+        // location.reload();
+      });
+
+      // Get a reference to the Edit Post Modal
+      // const editPostModal = document.getElementById("editPostModal");
+
+      // // Open the Edit Post Modal and prefill the form with the post data
+      // const openEditPostModal = (postId, postTitle, postContent) => {
+      //   const editPostForm = document.getElementById("editPostForm");
+      //   const editPostTitle = document.getElementById("editPostTitle");
+      //   const editPostContent = document.getElementById("editPostContent");
+      //   const editPostBtn = document.getElementById("editPostBtn");
+
+      //   editPostTitle.value = postTitle;
+      //   editPostContent.value = postContent;
+
+      //   // Handle the form submission to update the post data
+      //   editPostBtn.onclick = async () => {
+      //     try {
+      //       await updatePost(
+      //         postId,
+      //         editPostTitle.value,
+      //         editPostContent.value
+      //       );
+      //       console.log("Post updated successfully");
+      //       // Refresh the page to show the updated post data
+      //       location.reload();
+      //     } catch (error) {
+      //       console.error("Error updating post:", error);
+      //     }
+      //   };
+
+      //   // Open the Edit Post Modal
+      //   const modal = new bootstrap.Modal(editPostModal);
+      //   modal.show();
+      // };
+
+      // // Update the post data in the Firestore database
+      // const updatePost = async (postId, postTitle, postContent) => {
+      //   try {
+      //     const postRef = doc(db, "posts", postId);
+      //     await updateDoc(postRef, {
+      //       title: postTitle,
+      //       content: postContent,
+      //       updated_at: serverTimestamp(),
+      //     });
+      //   } catch (error) {
+      //     console.error("Error updating post:", error);
+      //     throw error;
+      //   }
+      // };
+
+      // // Example usage:
+      // // Assume you have a button with data-post-id, data-post-title, and data-post-content attributes in each post card
+      // const postCards = document.querySelector(".post-cards");
+      // postCards.addEventListener("click", (event) => {
+      //   const target = event.target;
+      //   if (target.classList.contains("edit-post-btn")) {
+      //     const postId = target.dataset.postId;
+      //     const postTitle = target.dataset.postTitle;
+      //     const postContent = target.dataset.postContent;
+      //     openEditPostModal(postId, postTitle, postContent);
+      //   }
+      // });
+
+      // // Update an existing post in the collection
+      // const updatePost = async (postId, title, content) => {
+      //   try {
+      //     await postsRef.doc(postId).update({
+      //       title: title,
+      //       content: content,
+      //       updated_at: firebase.firestore.Timestamp.now(),
+      //     });
+      //     console.log("Post updated successfully");
+      //     // Refresh the page to show the updated post
+      //     location.reload();
+      //   } catch (error) {
+      //     console.error("Error updating post: ", error);
+      //   }
+      // };
+
+      // // Handle the form submission when the "Save changes" button is clicked
+      // editPostBtn.addEventListener("click", function (e) {
+      //   e.preventDefault();
+
+      //   // Get the values from the form
+      //   const title = document.getElementById("editTitle").value;
+      //   const content = document.getElementById("editContent").value;
+      //   const postId = document.getElementById("postId").value;
+
+      //   // Validate the form
+      //   if (title.length == 0 || content.length == 0) {
+      //     alert("Please fill in all the fields");
+      //     return false;
+      //   }
+
+      //   // Update the post in the database
+      //   updatePost(postId, title, content);
+      // });
+
+      // // Delete an existing post from the collection
+      // const deletePost = async (postId) => {
+      //   try {
+      //     await doc(postsRef, postId).delete();
+      //     console.log("Post deleted successfully");
+      //     // Refresh the page to remove the deleted post
+      //     location.reload();
+      //   } catch (error) {
+      //     console.error("Error deleting post: ", error);
+      //   }
+      // };
+
+      // Handle the "Delete" button click event
+      // function deletePost(event) {
+      //   event.preventDefault();
+
+      //   // Get the ID of the post to be deleted
+      //   const postId = event.target.dataset.postId;
+
+      //   // Confirm with the user before deleting the post
+      //   if (confirm("Are you sure you want to delete this post?")) {
+      //     // Delete the post from the database
+      //     deletePost(postId);
+      //   }
+      // }
+    </script> -->
+
+    <!-- </script> -->
+    -->
+  </body>
+</html>

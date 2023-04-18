@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Travel</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+<!-- Bootstrap JavaScript -->
+<script
+defer
+src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@450&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Dream Travel</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="information.html">Information</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"
+              >Login<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://travel.state.gov/content/travel/en/international-travel.html"
+            >
+              International Travel</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- navbar end ========================================== -->
+
+ 
+    <!-- jumbotron new <style></style> -->
+    
+    <!-- <section id="cover" style="background-color: #e9ecef"> -->
+      <section id="cover" style="background-color: #e9ecef">
+
+     <div class="py-5">
+      <!--    <div class="container">
+         <img src="images/portfolio-1.jpg" alt="Image Description">  -->
+
+     <h1 class="display-4 text-center">Welcome to Login / Signup!</h1>
+          <p class="lead text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            sed velit at est consequat bibendum sed id eros.
+          </p>
+        </div>
+      </div>
+    </section>  
+    <div class="container">
+      <h1>Dark Mode</h1>
+      <button id="toggle-mode">Dark Mode</button>
+    
+    </div>  
+      
+    <div class="container">
+      <h1>Login/Register</h1>
+      <div class="App">
+        <div>
+          <h3 style="font-weight: bolder">Register User</h3>
+          <input type="email" placeholder="Email..." id="register-email" />
+          <input type="password" placeholder="Password..." id="register-password" />
+          <button id="register-button">Create User</button>
+          <div style="color:red; font-weight: 900;" class="errorRegister"></div>
+
+        </div>
+
+        <br />
+        <br />
+
+        <br />
+
+        <div>
+          <h3 style="font-weight: bolder">Login</h3>
+          <input type="email" placeholder="Email..." id="login-email" />
+          <input type="password" placeholder="Password..." id="login-password" />
+          <button id="login-button">Login</button> <br />
+          <div style="color:red; font-weight: 900;" class="errorLogin"></div>
+          <button id="google-login-button">Login With Google</button>
+        </div>
+      </div>
+
+      <div class="text-end">
+        <span id="user-email"></span>
+        <button
+          type="button"
+          class="text-end btn btn-danger"
+          id="logout-button"
+        >
+          Sign Out
+        </button>
+      </div>
+
+      <div>
+        <h3 style="font-weight: bolder;">Reset Password</h3>
+        <input type="email" placeholder="Email..." id="reset-email" />
+        <button id="reset-button">Reset Password</button> <br />
+        <div style=" color: red;" class="error"></div>
+      </div>
+      
+    </div>
+
+    <!-- <div class="container">
+      <h1>Login/Register</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 style="font-weight: bolder">Register User</h3>
+          <input placeholder="Email..." id="register-email" />
+          <input placeholder="Password..." id="register-password" />
+          <button id="register-button">Create User</button>
+        </div>
+
+        <div class="col-md-6">
+          <h3 style="font-weight: bolder">Login</h3>
+          <input placeholder="Email..." id="login-email" />
+          <input placeholder="Password..." id="login-password" />
+          <button id="login-button">Login</button> <br />
+          <button id="google-login-button">Login With Google</button>
+        </div>
+      </div>
+
+      <div class="text-end">
+        <span id="user-email"></span>
+        <button
+          type="button"
+          class="text-end btn btn-danger"
+          id="logout-button"
+        >
+          Sign Out
+        </button>
+      </div>
+    </div> -->
+
+    <footer class="footer">
+      <p>© Google. All Rights Reserved</p>
+    </footer>
+    <script defer type="module" src="js/loginScripts.js"></script>
+    <!-- <script defer type="module" src="../loginScripts.js"></script> -->
+
+  </body>
+</html>

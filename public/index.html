@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Travel</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@450&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Dream Travel</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="information.html">Information</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"
+              >Login<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://travel.state.gov/content/travel/en/international-travel.html"
+            >
+              International Travel</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- navbar end ========================================== -->
+
+    <div
+      class="jumbotron text-black jumImg"
+      style="background-image: url(./images/travel.jpg)"
+    >
+      <h1 class="display-4">
+        <span style="background-color: rgb(241, 241, 241, 0.5)"
+          >Dream Travel
+        </span>
+      </h1>
+
+      <p>
+        <span style="background-color: rgb(241, 241, 241, 0.8)"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+          minima omnis ducimus alias consequuntur rem, natus fugit porro quas
+          blanditiis culpa error doloremque officia itaque non quidem unde
+          quibusdam eveniet tempora temporibus. Ipsum velit numquam inventore
+          praesentium maiores quaerat hic illum eligendi quos culpa nesciunt,
+          quas eum atque magnam eaque sit obcaecati? Nemo ad itaque commodi
+          corrupti doloremque dolorum quo ipsam magnam aspernatur, atque
+          delectus quae quis, qui aliquam pariatur incidunt tempora magni! Porro
+          facere reprehenderit distinctio provident dicta nesciunt adipisci
+          ducimus enim amet nostrum molestiae dignissimos eaque rem quos cumque
+          natus sint, non officiis maiores cupiditate cum dolores illum.
+        </span>
+      </p>
+      <p class="lead">
+        <a
+          class="btn btn-primary btn-lg"
+          href="https://en.wikipedia.org/wiki/Travel"
+          role="button"
+          >Learn more</a
+        >
+      </p>
+    </div>
+
+    <div class="my-custom-container">
+      <div class="my-4 mx-auto" style="max-width: 600px">
+        <div class="input-group input-group-lg">
+          <input
+            type="text"
+            id="location-input"
+            class="form-control"
+            placeholder="Search..."
+          />
+          <!-- <div class="input-group-append"> -->
+          <button
+            class="btn btn-primary btn-lg"
+            type="button"
+            onclick="getLocation(); weather1(); search(); weatherInfo(); photoGallery()"
+          >
+            Go
+          </button>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-4 mx-auto apiContainer" style="display: none">
+      <ul class="nav nav-tabs mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#tab1"
+            >Location Info</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab2">Map</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab3">Weather</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab4"
+            >10 days weather info</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab5">Wikipedia Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab6">Images</a>
+        </li>
+      </ul>
+
+      <div class="tab-content mt-4 text-center">
+        <div class="tab-pane fade show active" id="tab1">
+          <h3>Tab 1 Content Location Info</h3>
+          <p>This is the content for Tab 1.</p>
+          <p id="location-output"></p>
+
+          <h3 id="place-name"></h3>
+          <p id="place-description"></p>
+          <img id="place-photo" />
+        </div>
+        <div class="tab-pane fade" id="tab2">
+          <h3>Tab 2 Map</h3>
+          <div id="map"></div>
+
+          <p>This is the content for Tab 2.</p>
+        </div>
+        <div class="tab-pane fade" id="tab3">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Weather</h5>
+            </div>
+            <div class="card-body">
+              <p>This is the content for Tab 3.</p>
+              <div id="weather-info">
+                <p class="card-text" id="temperature"></p>
+                <p class="card-text" id="description"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab4">
+          <div class="card">
+            <div class="card-text">
+              <h1>10 Days Weather Data with Dates</h1>
+              <table class="table table-bordered mt-4">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Min Temp (°C)</th>
+                    <th>Max Temp (°C)</th>
+                    <th>Precipitation (mm)</th>
+                    <th>Conditions</th>
+                  </tr>
+                </thead>
+                <tbody id="weatherData"></tbody>
+              </table>
+            </div>
+          </div>
+          <h3>Tab 4 Content</h3>
+        </div>
+
+        <div class="tab-pane fade" id="tab5">
+          <div class="card">
+            <div class="card-text">
+              <h5 style="font-weight: bolder" id="results"></h5>
+            </div>
+          </div>
+          <h3>Tab 5 Content</h3>
+        </div>
+
+        <div class="tab-pane fade" id="tab6">
+          <div class="card">
+            <div class="card-text">
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                "
+                id="image-container"
+              ></div>
+            </div>
+          </div>
+          <h3>Tab 6 Content</h3>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© Google. All Rights Reserved</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load the Google Places JavaScript library -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFvgi799vkNsLsk_IhzMTKhreByAvFB6g&libraries=places"
+    ></script>
+
+    <script src="js/scripts.js" defer></script>
+  </body>
+</html>
