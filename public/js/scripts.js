@@ -24,11 +24,56 @@ function getLocation() {
       const location = results[0].geometry.location;
       console.log(`Latitude: ${location.lat()}, Longitude: ${location.lng()}`);
 
+      // Calling functions
       initMap(location.lat(), location.lng());
-
-
-      showRestaurants(location.lat(), location.lng());
-
+      showRestaurants(
+        location.lat(),
+        location.lng(),
+        "restaurant",
+        "restaurant-list"
+      );
+      const showHotels = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "hotels",
+        "hotel-list"
+      );
+      const showAccommodations = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "accommodation",
+        "accommodation-list"
+      );
+      const showActivities = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "activities",
+        "activities-list"
+      );
+      const showAttractions = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "attractions",
+        "attractions-list"
+      );
+      const showHealth = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "health",
+        "health-list"
+      );
+      const showSafety = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "safety",
+        "safety-list"
+      );
+      const showTransfortion = showRestaurants(
+        location.lat(),
+        location.lng(),
+        "transportation",
+        "transportation-list"
+      );
 
       // Use the Places API to search for places at the given location
       const request = {
@@ -137,11 +182,12 @@ function initMap(latitude, longitude) {
   });
 }
 
-function showRestaurants(latitude, longitude) {
+// Function for generating a list of places 
+function showRestaurants(latitude, longitude, keywordName, classListName) {
   const location = new google.maps.LatLng(latitude, longitude);
   const radius = 500; // in meters
-  const keyword = "restaurant";
-  const map = new google.maps.Map(document.getElementById("map1"), {
+  const keyword = keywordName;
+  const map = new google.maps.Map(document.getElementById("map"), {
     center: location,
     zoom: 15,
   });
@@ -153,7 +199,7 @@ function showRestaurants(latitude, longitude) {
   const service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      const restaurantList = document.getElementById("restaurant-list");
+      const restaurantList = document.getElementById(classListName);
       restaurantList.innerHTML = "";
       results.forEach((place) => {
         const li = document.createElement("li");
@@ -165,7 +211,7 @@ function showRestaurants(latitude, longitude) {
         const img = document.createElement("img");
         img.src = place.photos && place.photos[0].getUrl();
         img.alt = place.name;
-        img.classList.add("img-fluid");
+        img.classList.add("img-fluid", "img-thumbnail", "rounded");
         col1.appendChild(img);
         row.appendChild(col1);
         const col2 = document.createElement("div");
@@ -180,6 +226,7 @@ function showRestaurants(latitude, longitude) {
         const link = document.createElement("a");
         link.href = `https://www.google.com/maps/dir/?api=1&destination=${place.geometry.location.lat()},${place.geometry.location.lng()}`;
         link.textContent = "Get Directions";
+        link.target = "_blank"; 
         col2.appendChild(link);
         row.appendChild(col2);
         li.appendChild(row);
@@ -188,7 +235,6 @@ function showRestaurants(latitude, longitude) {
     }
   });
 }
-
 
 
 

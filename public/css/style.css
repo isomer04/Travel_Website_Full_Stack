@@ -54,7 +54,7 @@ body {
 .container div img {
     object-fit: cover;
     width: 100%;
-    height: 60vh;
+    /* height: 60vh; */
 
 }
 
@@ -129,7 +129,6 @@ input::placeholder{
 .jumImg {
     background-position: center center;
     background-size: cover;
-    font-style: italic;
     text-align: center;
     color: rgb(27, 6, 75);
 
