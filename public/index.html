@@ -156,23 +156,32 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#tab6">Images</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab7">Restaurant List
+          </a>
+        </li>
       </ul>
 
       <div class="tab-content mt-4 text-center">
         <div class="tab-pane fade show active" id="tab1">
-          <h3>Tab 1 Content Location Info</h3>
-          <p>This is the content for Tab 1.</p>
-          <p id="location-output"></p>
+          <h3>Location Info</h3>
+          <div class="output">
+            <p id="location-output"></p>
 
-          <h3 id="place-name"></h3>
-          <p id="place-description"></p>
-          <img id="place-photo" />
+            <h3 id="place-name"></h3>
+            <p id="place-description"></p>
+            <img id="place-photo" />
+          </div>
+       
+
+          <div id="error-message"></div>
+
         </div>
         <div class="tab-pane fade" id="tab2">
-          <h3>Tab 2 Map</h3>
+          <h3>Google Map</h3>
           <div id="map"></div>
 
-          <p>This is the content for Tab 2.</p>
         </div>
         <div class="tab-pane fade" id="tab3">
           <div class="card">
@@ -180,7 +189,6 @@
               <h5 class="card-title">Weather</h5>
             </div>
             <div class="card-body">
-              <p>This is the content for Tab 3.</p>
               <div id="weather-info">
                 <p class="card-text" id="temperature"></p>
                 <p class="card-text" id="description"></p>
@@ -207,7 +215,6 @@
               </table>
             </div>
           </div>
-          <h3>Tab 4 Content</h3>
         </div>
 
         <div class="tab-pane fade" id="tab5">
@@ -216,7 +223,6 @@
               <h5 style="font-weight: bolder" id="results"></h5>
             </div>
           </div>
-          <h3>Tab 5 Content</h3>
         </div>
 
         <div class="tab-pane fade" id="tab6">
@@ -233,10 +239,34 @@
               ></div>
             </div>
           </div>
-          <h3>Tab 6 Content</h3>
+        </div>
+
+        <div class="tab-pane fade" id="tab7">
+          <div class="card">
+            <div class="card-text">
+           
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+       
+        <div class="col-md-12">
+          <ul id="restaurant-list" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <h1>Restaurant List</h1>
+    <p>Showing restaurants near the location</p>
+    <ul id="restaurant-list">
+    
+    </ul> -->
+
 
     <footer class="footer">
       <p>© Google. All Rights Reserved</p>

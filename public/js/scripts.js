@@ -1,8 +1,10 @@
-
 const locationInput = document
   .getElementById("location-input")
   .value.toLowerCase()
   .replace(/[^a-z]/g, "");
+
+// document.getElementById("output").style.display = "block";
+// document.getElementById("error-message").style.display = "block";
 
 function getLocation() {
   const locationInput = document
@@ -24,6 +26,10 @@ function getLocation() {
 
       initMap(location.lat(), location.lng());
 
+
+      showRestaurants(location.lat(), location.lng());
+
+
       // Use the Places API to search for places at the given location
       const request = {
         location: location,
@@ -36,6 +42,8 @@ function getLocation() {
         { location: location, radius: 500 },
         (results, status) => {
           if (status === "OK" && results.length > 0) {
+            document.getElementById("error-message").style.display = "none";
+
             const place = results[0];
 
             // Get the first photo for the place, if available
@@ -69,30 +77,120 @@ function getLocation() {
                 document.getElementById("place-name").textContent = placeName;
                 document.getElementById("place-description").textContent =
                   placeDescription;
+                document.getElementById("place-photo").style.display = "block";
 
                 document.getElementById("place-photo").src = photoUrl;
               } else {
                 console.error("Place details not found.");
+                document.getElementById("output").style.display = "none";
+                document.getElementById("error-message").style.display =
+                  "block";
+                document.getElementById("error-message").textContent =
+                  "Sorry, we could not find details for this place.";
               }
             });
-          } else {
+          } else if (status === "ZERO_RESULTS") {
             console.error("No places found.");
+            document.getElementById("output").style.display = "none";
+            document.getElementById("error-message").style.display = "block";
+            document.getElementById("error-message").textContent =
+              "Sorry, we could not find any places near this location.";
+          } else if (status === "OVER_QUERY_LIMIT") {
+            console.error("Query limit reached.");
+            document.getElementById("output").style.display = "none";
+            document.getElementById("error-message").style.display = "block";
+            document.getElementById("error-message").textContent =
+              "Sorry, we have exceeded our query limit. Please try again later.";
           }
         }
       );
     } else {
-      console.error("Place not found.");
+      console.log(
+        `Geocode was not successful for the following reason: ${status}.`
+      );
+      // document.getElementById("output").style.display = "none";
+      document.getElementById("error-message").style.display = "block";
+      document.getElementById("error-message").textContent =
+        "Sorry, we could not find this location. Please enter a valid location.";
+      document.getElementById("place-name").textContent = "";
+      document.getElementById("place-description").textContent = "";
+
+      document.getElementById("place-photo").style.display = "none";
     }
   });
 }
 
-// This is for showing map
-function initMap(lat, lng) {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat, lng },
-    zoom: 8,
+// Function to initialize the map with the given location
+function initMap(latitude, longitude) {
+  const mapDiv = document.getElementById("map");
+
+  // Create a new map object centered at the given location
+  const map = new google.maps.Map(mapDiv, {
+    center: { lat: latitude, lng: longitude },
+    zoom: 13,
+  });
+
+  // Add a marker at the given location
+  const marker = new google.maps.Marker({
+    position: { lat: latitude, lng: longitude },
+    map: map,
   });
 }
+
+function showRestaurants(latitude, longitude) {
+  const location = new google.maps.LatLng(latitude, longitude);
+  const radius = 500; // in meters
+  const keyword = "restaurant";
+  const map = new google.maps.Map(document.getElementById("map1"), {
+    center: location,
+    zoom: 15,
+  });
+  const request = {
+    location,
+    radius,
+    keyword,
+  };
+  const service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      const restaurantList = document.getElementById("restaurant-list");
+      restaurantList.innerHTML = "";
+      results.forEach((place) => {
+        const li = document.createElement("li");
+        li.classList.add("list-group-item");
+        const row = document.createElement("div");
+        row.classList.add("row");
+        const col1 = document.createElement("div");
+        col1.classList.add("col-4");
+        const img = document.createElement("img");
+        img.src = place.photos && place.photos[0].getUrl();
+        img.alt = place.name;
+        img.classList.add("img-fluid");
+        col1.appendChild(img);
+        row.appendChild(col1);
+        const col2 = document.createElement("div");
+        col2.classList.add("col-8");
+        const name = document.createElement("h5");
+        name.classList.add("mt-0");
+        name.textContent = place.name;
+        col2.appendChild(name);
+        const address = document.createElement("p");
+        address.textContent = place.vicinity;
+        col2.appendChild(address);
+        const link = document.createElement("a");
+        link.href = `https://www.google.com/maps/dir/?api=1&destination=${place.geometry.location.lat()},${place.geometry.location.lng()}`;
+        link.textContent = "Get Directions";
+        col2.appendChild(link);
+        row.appendChild(col2);
+        li.appendChild(row);
+        restaurantList.appendChild(li);
+      });
+    }
+  });
+}
+
+
+
 
 function weather1() {
   const form = document.getElementById("weather-form");
@@ -150,10 +248,7 @@ function weather1() {
 //This is for wiki search
 
 function search() {
-  const locationInput = document
-    .getElementById("location-input")
-    .value.toLowerCase()
-    .replace(/[^a-z]/g, "");
+  const locationInput = document.getElementById("location-input").value;
 
   // const url = `/api3?q=${locationInput}`;
 
@@ -164,17 +259,25 @@ function search() {
     const pageId = Object.keys(pages)[0];
     const page = pages[pageId];
     const extract = page.extract;
+    console.log(JSON.stringify(extract) + " this is a extract log"); // add this line to log the page object
 
-    const paragraphs = extract.split("\n\n"); // split the content into paragraphs
+    const paragraphs = extract; //.split("\n\n"); // split the content into paragraphs
 
     const resultsElement = document.getElementById("results");
     resultsElement.innerHTML = ""; // clear the old results
 
-    paragraphs.forEach((paragraph) => {
+    if (Array.isArray(paragraphs)) {
+      paragraphs.forEach((paragraph) => {
+        const p = document.createElement("p"); // create a new <p> element
+        p.innerText = paragraph; // set the content of the <p> element
+        resultsElement.appendChild(p); // add the <p> element to the results element
+      });
+    } else {
+      console.error("Paragraphs is not an array.");
       const p = document.createElement("p"); // create a new <p> element
-      p.innerText = paragraph; // set the content of the <p> element
-      resultsElement.appendChild(p); // add the <p> element to the results element
-    });
+      p.innerText = paragraphs; // set the content of the <p> element
+      resultsElement.appendChild(p);
+    }
   };
 
   const script = document.createElement("script");
