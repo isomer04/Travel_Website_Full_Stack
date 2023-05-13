@@ -3,6 +3,13 @@
 ## Getting Started
 To get started, simply visit the website at https://travelwebsitefullstack-production.up.railway.app/. From there, you can browse available destinations, view details about each destination, create an account, and make blog posts.
 
+
+
+
+https://github.com/isomer04/Travel_Website_Full_Stack/assets/43922158/30992c55-5474-4fd0-b9f1-f01d1c3325e4
+
+
+
 ## Technologies Used
 - HTML
 - CSS
