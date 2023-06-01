@@ -33,6 +33,7 @@ My Travel Website is a web application that allows users to search for locations
 3. Run the application with `npm start`
 
 ## License
-This project is licensed under MIT; see the LICENSE file for details.
+All rights reserved.
 
+Redistribution and use in source and binary forms, with or without modification, are prohibited.
 
