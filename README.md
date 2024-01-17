@@ -3,6 +3,8 @@
 ## Getting Started
 To get started, simply visit the website at https://travelwebsitefullstack-production.up.railway.app/. From there, you can browse available destinations, view details about each destination, create an account, and make blog posts.
 
+The project is also deployed using AWS EC2. Here is the link: https://dreamtravel.infinitesevens.com/
+
 
 
 
